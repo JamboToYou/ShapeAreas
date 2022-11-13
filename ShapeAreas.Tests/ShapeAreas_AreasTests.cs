@@ -6,7 +6,6 @@ namespace ShapeAreas.Tests
 		[InlineData(0, 0)]
 		[InlineData(1, Math.PI)]
 		[InlineData(4, Math.PI * 16)]
-		[InlineData(double.MaxValue, Math.PI * double.MaxValue * double.MaxValue)]
 		public void CircleArea_CanCalculate(double rad, double expected)
 		{
 			var circle = new Circle(rad);
@@ -17,7 +16,9 @@ namespace ShapeAreas.Tests
 		[Fact]
 		public void CircleArea_DoesFollowLimitations()
 		{
-			Assert.Throws<ArgumentException>(() => new Circle(-1));
+			Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(-1));
+			Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(Circle.MAX_ALLOWED_RAD_VALUE * 10));
+			Assert.Throws<ArgumentOutOfRangeException>(() => new Circle(Circle.MAX_ALLOWED_RAD_VALUE * 1.1));
 		}
 	}
 }
