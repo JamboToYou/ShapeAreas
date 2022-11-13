@@ -7,6 +7,9 @@
 
 		public Circle(double radius)
 		{
+			if (radius < 0)
+				throw new ArgumentException("Radius value must be positive");
+
 			_radius = radius;
 		}
 
