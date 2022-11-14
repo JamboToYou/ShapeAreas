@@ -15,9 +15,12 @@
 
 		public override double CalculateArea()
 		{
-			var perimeter = Edge1 + Edge2 + Edge3;
+			if (Edge1 == 0 || Edge2 == 0 || Edge3 == 0)
+				return 0;
 
-			return Math.Sqrt(perimeter * (perimeter - Edge1) * (perimeter - Edge2) * (perimeter - Edge3));
+			var halfPerim = (Edge1 + Edge2 + Edge3) / 2;
+
+			return Math.Sqrt(halfPerim * (halfPerim - Edge1) * (halfPerim - Edge2) * (halfPerim - Edge3));
 		}
 
 		public bool IsRightTriangle() => Edge1 == Edge2 || Edge2 == Edge3 || Edge1 == Edge3;
