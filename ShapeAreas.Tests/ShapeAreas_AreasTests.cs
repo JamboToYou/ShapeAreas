@@ -32,5 +32,17 @@ namespace ShapeAreas.Tests
 
 			Assert.Equal(expected, triangle.CalculateArea());
 		}
+
+		[Fact]
+		public void TriangleArea_DoesFollowLimitations()
+		{
+			Assert.Throws<ArgumentOutOfRangeException>(() => new Triangle(-1, 100, 100));
+			Assert.Throws<ArgumentOutOfRangeException>(() => new Triangle(100, -1, 100));
+			Assert.Throws<ArgumentOutOfRangeException>(() => new Triangle(100, 100, -1));
+
+			Assert.Throws<ArgumentOutOfRangeException>(() => new Triangle(Triangle.MAX_ALLOWED_EDGE_VALUE * 2, 100, 100));
+			Assert.Throws<ArgumentOutOfRangeException>(() => new Triangle(100, Triangle.MAX_ALLOWED_EDGE_VALUE * 2, 100));
+			Assert.Throws<ArgumentOutOfRangeException>(() => new Triangle(100, 100, Triangle.MAX_ALLOWED_EDGE_VALUE * 2));
+		}
 	}
 }
