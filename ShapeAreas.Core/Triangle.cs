@@ -39,6 +39,13 @@
 			return Math.Sqrt(halfPerim * (halfPerim - Edge1) * (halfPerim - Edge2) * (halfPerim - Edge3));
 		}
 
-		public bool IsRightTriangle() => Edge1 == Edge2 || Edge2 == Edge3 || Edge1 == Edge3;
+		public bool IsRightTriangle()
+		{
+			var eSq1 = Edge1 * Edge1;
+			var eSq2 = Edge2 * Edge2;
+			var eSq3 = Edge3 * Edge3;
+
+			return eSq1 + eSq2 == eSq3 || eSq2 + eSq3 == eSq1 || eSq1 + eSq3 == eSq2;
+		}
 	}
 }

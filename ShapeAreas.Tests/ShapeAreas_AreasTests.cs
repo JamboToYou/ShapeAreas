@@ -44,5 +44,16 @@ namespace ShapeAreas.Tests
 			Assert.Throws<ArgumentOutOfRangeException>(() => new Triangle(100, Triangle.MAX_ALLOWED_EDGE_VALUE * 2, 100));
 			Assert.Throws<ArgumentOutOfRangeException>(() => new Triangle(100, 100, Triangle.MAX_ALLOWED_EDGE_VALUE * 2));
 		}
+
+		[Theory]
+		[InlineData(3, 4, 5, true)]
+		[InlineData(5, 12, 13, true)]
+		[InlineData(1, 2, 3, false)]
+		public void Triangle_IsRightTriangle(double edge1, double edge2, double edge3, bool expected)
+		{
+			var triangle = new Triangle(edge1, edge2, edge3);
+
+			Assert.Equal(expected, triangle.IsRightTriangle());
+		}
 	}
 }
