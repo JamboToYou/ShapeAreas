@@ -36,7 +36,12 @@
 
 			var halfPerim = (Edge1 + Edge2 + Edge3) / 2;
 
-			return Math.Sqrt(halfPerim * (halfPerim - Edge1) * (halfPerim - Edge2) * (halfPerim - Edge3));
+			// sqrt separartion made to fit in type size while calculation
+			return
+				Math.Sqrt(halfPerim) *
+				Math.Sqrt(halfPerim - Edge1) *
+				Math.Sqrt(halfPerim - Edge2) *
+				Math.Sqrt(halfPerim - Edge3);
 		}
 
 		public bool IsRightTriangle()
