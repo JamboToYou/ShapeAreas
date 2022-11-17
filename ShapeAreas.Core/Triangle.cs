@@ -34,6 +34,34 @@
 			if (Edge1 == 0 || Edge2 == 0 || Edge3 == 0)
 				return 0;
 
+			if (IsRightTriangle())
+			{
+				var eSq1 = Edge1 * Edge1;
+				var eSq2 = Edge2 * Edge2;
+				var eSq3 = Edge3 * Edge3;
+
+				double e1;
+				double e2;
+
+				if (eSq1 + eSq2 == eSq3)
+				{
+					e1 = Edge1;
+					e2 = Edge2;
+				}
+				else if (eSq2 + eSq3 == eSq1)
+				{
+					e1 = Edge2;
+					e2 = Edge3;
+				}
+				else
+				{
+					e1 = Edge1;
+					e2 = Edge3;
+				}
+
+				return (e1 * e2) / 2;
+			}
+
 			var halfPerim = (Edge1 + Edge2 + Edge3) / 2;
 
 			// sqrt separartion made to fit in type size while calculation

@@ -30,7 +30,8 @@ namespace ShapeAreas.Tests
 		{
 			var triangle = new Triangle(edge1, edge2, edge3);
 
-			Assert.Equal(expected, triangle.CalculateArea());
+			// precision could be set in terms of requirements
+			Assert.Equal(expected, triangle.CalculateArea(), 13);
 		}
 
 		[Fact]
